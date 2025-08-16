@@ -155,7 +155,7 @@ export function PathSelection() {
             </h4>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
               <div>
-                <h5 className="font-medium text-gray-800 mb-2">Choose "Own Data" if:</h5>
+                <h5 className="font-medium text-gray-800 mb-2">Choose &quot;Own Data&quot; if:</h5>
                 <ul className="space-y-1 text-gray-600">
                   <li>• You have an existing SaaS business</li>
                   <li>• You know your current metrics</li>
@@ -163,7 +163,7 @@ export function PathSelection() {
                 </ul>
               </div>
               <div>
-                <h5 className="font-medium text-gray-800 mb-2">Choose "Scenarios" if:</h5>
+                <h5 className="font-medium text-gray-800 mb-2">Choose &quot;Scenarios&quot; if:</h5>
                 <ul className="space-y-1 text-gray-600">
                   <li>• You&apos;re planning to start a SaaS</li>
                   <li>• You want to learn about metrics first</li>

@@ -9,10 +9,10 @@ import { VisualizationPanel } from '../charts/visualization-panel';
 import { GuidancePanel } from '../mascot/guidance-panel';
 import { ExportSection } from './export-section';
 import { FadeInUp, SlideInLeft, SlideInRight, AnimatedCard } from '../animations/animated-card';
-import { BookOpen } from 'lucide-react';
+import { BookOpen, RotateCcw } from 'lucide-react';
 
 export function MetricsDashboard() {
-  const { analysis, selectedScenario } = useMetricsStore();
+  const { analysis, selectedScenario, resetOnboarding } = useMetricsStore();
 
   return (
     <div className="min-h-screen bg-gray-50 p-4">
@@ -27,12 +27,22 @@ export function MetricsDashboard() {
               Calculate, understand, and optimize your SaaS metrics in a fun, interactive way.
               Meet SaaSy the Owl - your metrics guide!
             </p>
-            <Link href="/scenarios">
-              <Button variant="outline" className="gap-2">
-                <BookOpen className="w-4 h-4" />
-                Explore Scenarios
+            <div className="flex items-center justify-center gap-4">
+              <Link href="/scenarios">
+                <Button variant="outline" className="gap-2">
+                  <BookOpen className="w-4 h-4" />
+                  Explore Scenarios
+                </Button>
+              </Link>
+              <Button 
+                variant="ghost" 
+                className="gap-2 text-gray-500 hover:text-gray-700"
+                onClick={resetOnboarding}
+              >
+                <RotateCcw className="w-4 h-4" />
+                Restart Tour
               </Button>
-            </Link>
+            </div>
           </div>
         </div>
       </FadeInUp>

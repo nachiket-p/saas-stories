@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { MetricsInput, MetricsAnalysis, analyzeMetrics, DEFAULT_METRICS } from '../calculations/metrics';
-import { Scenario } from '../calculations/scenarios';
+import { Scenario, getScenarioById } from '../calculations/scenarios';
 
 interface MetricsStore {
   // Current metrics data
@@ -24,6 +24,7 @@ interface MetricsStore {
   // Actions
   updateInput: (input: Partial<MetricsInput>) => void;
   setScenario: (scenario: Scenario | null) => void;
+  setCurrentScenario: (scenarioId: string) => void;
   recalculate: () => void;
   setAnimating: (animating: boolean) => void;
   setShowTips: (show: boolean) => void;
@@ -86,6 +87,18 @@ export const useMetricsStore = create<MetricsStore>((set, get) => ({
     } else {
       set({
         selectedScenario: null,
+      });
+    }
+  },
+
+  setCurrentScenario: (scenarioId) => {
+    const scenario = getScenarioById(scenarioId);
+    if (scenario) {
+      const analysis = analyzeMetrics(scenario.metrics);
+      set({
+        selectedScenario: scenario,
+        input: scenario.metrics,
+        analysis,
       });
     }
   },
